@@ -83,10 +83,10 @@ const Login = (props) => {
         dispatch(loginStart());
         try {
             const resp = await axios.post("http://localhost:4000/api/auth/signin", { email, password });
-            // const json = await resp.json();
-            localStorage.setItem("token", resp.authtoken);
-            navigate('/');
+            const json = await resp.json();
+            localStorage.setItem("token", json.authtoken);
             dispatch(loginSuccess(resp.data));
+            navigate('/');
 
         } catch (error) {
             dispatch(loginFailure());

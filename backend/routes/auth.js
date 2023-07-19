@@ -39,7 +39,12 @@ router.post('/signin', async (req, resp, next) => {
         // const token = jwt.sign({ id: user._id }, jwtKey);
         // const { password, ...othersDetails } = user._doc;
 
-        const authtoken = jwt.sign({ id: user._id }, jwtKey);
+        const data = {
+            user: {
+                id: user.id
+            }
+        }
+        const authtoken = jwt.sign(data, jwtKey);
         resp.send({ authtoken });
 
         // resp.cookie("access_token", token, {

@@ -14,7 +14,7 @@ export const videoSlice = createSlice({
             state.loading = true;
         },
         fetchSuccess: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.currentVideo = action.payload;
         },
         fetchFailure: (state) => {
@@ -28,7 +28,7 @@ export const videoSlice = createSlice({
                 //splice method - Changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
                 state.currentVideo.dislikes.splice(
                     state.currentVideo.dislikes.findIndex(
-                        UserId => UserId === action.payload
+                        (UserId) => UserId === action.payload
                     ), 1
                 );
             }
@@ -38,7 +38,7 @@ export const videoSlice = createSlice({
                 state.currentVideo.dislikes.push(action.payload)
                 state.currentVideo.likes.splice(
                     state.currentVideo.likes.findIndex(
-                        UserId => UserId === action.payload
+                        (UserId) => UserId === action.payload
                     ), 1
                 );
             }

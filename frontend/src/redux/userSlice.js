@@ -14,7 +14,7 @@ export const userSlice = createSlice({
             state.loading = true;
         },
         loginSuccess: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.currentUser = action.payload;
         },
         loginFailure: (state) => {
@@ -33,7 +33,7 @@ export const userSlice = createSlice({
                 //splice method - Changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
                 state.currentUser.subscribedUsers.splice(
                     state.currentUser?.subscribedUsers.findIndex(
-                        channelId => channelId === action.payload
+                        (channelId) => channelId === action.payload
                     ), 1
                 );
             } else {
