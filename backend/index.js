@@ -23,7 +23,9 @@ app.use(cors(CorsOptions));
 
 // app.use(cors());
 connectToMongo();
-console.log(process.env)
+const port = process.env.PORT|| 5000
+// console.log(process.env)
+console.log(process.env.NODE_ENV);
 
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
@@ -40,4 +42,6 @@ app.use((err, req, resp, next) => {
     })
 });
 
-app.listen(5000);
+app.listen(port, () => {
+    console.log(`NoteHub backend listening on port ${port}`)
+  })
