@@ -45,7 +45,8 @@ router.post('/signin', async (req, resp, next) => {
             }
         }
         const authtoken = jwt.sign(data, jwtKey);
-        resp.send({ authtoken });
+        const { password, ...othersDetails } = user._doc;
+        resp.send({ authtoken, othersDetails });
 
         // resp.cookie("access_token", token, {
         //     httpOnly: true
