@@ -43,5 +43,5 @@ app.use((err, req, resp, next) => {
 });
 
 app.listen(port, () => {
-    console.log(`NoteHub backend listening on port ${port}`)
+    console.log(`Youtube backend listening on port ${port}`)
   })
